@@ -1,7 +1,9 @@
+import { colorSchemes } from './../../store/features/themeSlice';
 import {createTheme, Theme} from '@mui/material';
 import { ThemeOptions } from '@mui/material';
 
 import siteConfig from '@/site-config';
+import { dark } from 'node_modules/@mui/material/esm/styles/createPalette';
 
 const defaultTheme = createTheme();
 
@@ -18,31 +20,54 @@ declare module '@mui/material/styles' {
         xxl: true;
     }
 }
-
-export const getDesignTokens = (mode: 'light' | 'dark') =>
+//mode: 'light' | 'dark'
+export const getDesignTokens = () =>
 ({
     cssVariables: {
-        cssVarPrefix: ''
+        cssVarPrefix: '',
     },
+    //cssVariables: true,
     palette: {
-        mode,
-        ...(mode === 'light'
-            ? {
+        primary: {
+            main: siteConfig.theme.color.primary.light,
+            contrastText: '#fff'
+        },
+        secondary: {
+            main: siteConfig.theme.color.secondary.light,
+            contrastText: '#fff'
+        },
+        colorSchemes: {
+            light: {
                 primary: {
-                    main: siteConfig.theme.color.primary.light
+                    main: siteConfig.theme.color.primary.light,
+                    contrastText: '#fff'  
+                }  
+            },
+            dark: {
+                primary: {
+                    main: siteConfig.theme.color.primary.dark,
+                    contrastText: '#fff'
                 },
-                secondary: {
-                    main: siteConfig.theme.color.secondary.light
-                }
             }
-            : {
-                primary: {
-                    main: siteConfig.theme.color.primary.dark
-                },
-                secondary: {
-                    main: siteConfig.theme.color.secondary.dark
-                }
-            })
+        }
+        // mode,
+        // ...(mode === 'light'
+        //     ? {
+        //         primary: {
+        //             main: siteConfig.theme.color.primary.light
+        //         },
+        //         secondary: {
+        //             main: siteConfig.theme.color.secondary.light
+        //         }
+        //     }
+        //     : {
+        //         primary: {
+        //             main: siteConfig.theme.color.primary.dark
+        //         },
+        //         secondary: {
+        //             main: siteConfig.theme.color.secondary.dark
+        //         }
+        //     })
     },
     typography: {
         htmlFontSize: 16,
