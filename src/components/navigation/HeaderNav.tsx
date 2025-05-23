@@ -10,8 +10,9 @@ const HeaderNav = () => {
         gap: '16px',
         marginRight: '2rem',
         '& a': {
-          color: 'white',
+          color: 'black',
           fontWeight: 500,
+          fontSize: '1rem',
         },
       }}
     >

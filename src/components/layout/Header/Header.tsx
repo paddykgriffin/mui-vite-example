@@ -6,6 +6,7 @@ import { useDarkMode } from '@/hooks/useDarkMode';
 import Logo from '@/components/common/Logo/Logo';
 import SideBarNav from '@/components/layout/Header/SideBarNav';
 import siteConfig from '@/site-config';
+import { s3 } from '@/utils/s3';
 
 export default function Header() {
   const { isNavTransparent, isNavVisible, mainNavRef } = useHeader();
@@ -16,18 +17,14 @@ export default function Header() {
     <AppBar
       sx={[
         {
-          position: 'relative',
+          position: 'fixed',
           display: 'inherit',
           p: 0,
           top: !isNavVisible ? -(mainNavRef.current?.offsetHeight || '80px') : 0,
-          backgroundColor: 'primary.main',
+          backgroundColor: 'transparent',
           boxShadow: 'none',
           backgroundImage: 'inherit',
         },
-        theme =>
-          theme.applyStyles('dark', {
-            backgroundColor: 'primary.main',
-          }),
       ]}
     >
       <Box
@@ -35,6 +32,7 @@ export default function Header() {
         sx={{
           py: 2,
           background: isNavTransparent ? 'transparent' : isDarkMode ? 'black' : 'white',
+          boxShadow: isNavTransparent ? 'none' : '0px 2px 4px rgba(0, 0, 0, 0.1)',
         }}
       >
         <Container
@@ -43,30 +41,33 @@ export default function Header() {
             justifyContent: 'space-between',
             alignItems: 'center',
           }}
-          maxWidth="xl"
+          maxWidth="lg"
         >
           <Box
             sx={{
+              display: 'flex',
+              alignItems: 'center',
+              // '& a': {
+              //   height: '2rem',
+              // },
               '& img': {
+                mr: 6,
                 height: '2rem',
               },
             }}
           >
             <Logo />
+            <HeaderNav />
           </Box>
           <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
+              gap: 2,
             }}
           >
-            <Box
-              sx={{
-                display: { xs: 'none', md: 'block' },
-              }}
-            >
-              <HeaderNav />
-            </Box>
+            <img src={s3('app-store.png')} alt="" />
+            <img src={s3('play-store.png')} alt="" />
             <ModeToggle />
             <Box
               sx={{

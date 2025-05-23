@@ -1,22 +1,22 @@
 import Layout from '../../components/layout/Layout';
-import { Hero, Background, Content, Title, SubTitle, ScrollIcon } from '@/components/common/Hero/Hero';
+import { Hero, Background, Content, Title, ScrollIcon } from '@/components/common/Hero/Hero';
 import Logos from './components/Logos';
 import TailorMadeFeatures from './components/TailorMadeFeatures';
 import Testimonials from './components/Testimonials';
 import Achievements from './components/Achievements';
 import AppPromotion from './components/AppPromotion';
+import { s3 } from '@/utils/s3';
 
 const Home = () => {
   return (
     <Layout pageTitle="Home">
       <Hero>
-        <Background type="img" src="https://picsum.photos/id/1/1920/600" srcMobile="/images/hero-mobile.png" />
-        <Content className="items-center text-center">
-          <Title className="leading-18 m-5  text-white">Organise projects. Get more done.</Title>
-          <SubTitle className="m-5 text-white max-w-[900px] mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam molestiae laborum eum minima itaque
-            praesentium.
-          </SubTitle>
+        <Background type="img" src={s3('hero.png')} srcMobile="/images/hero-mobile.png" hideTransparentLayer />
+        <Content>
+          <Title>
+            Organise projects. <br />
+            Get more done.
+          </Title>
         </Content>
         <ScrollIcon align="center" />
       </Hero>

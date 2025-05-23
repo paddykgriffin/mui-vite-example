@@ -16,12 +16,13 @@ const ModeToggle = () => {
         disableTouchRipple
         onClick={() => dispatch(setThemeMode(isDarkMode ? colorSchemes.light : colorSchemes.dark))}
         sx={{
-          color: theme => (theme.palette.mode === 'dark' ? 'grey.800' : 'grey.800'),
-          background: 'white',
+          color: theme => (theme.palette.mode === 'dark' ? 'grey.100' : 'grey.100'),
+          background: theme =>
+            theme.palette.mode === 'dark' ? theme.vars.palette.secondary.main : theme.vars.palette.primary.main,
           borderColor: 'solid 1px blue',
-          '&:hover': {
-            background: 'rgba(255,255,255,.5)',
-          },
+          // '&:hover': {
+          //   background: 'rgba(255,255,255,.5)',
+          // },
         }}
       >
         {isDarkMode ? <LightModeOutlined fontSize="small" /> : <DarkModeOutlined fontSize="small" />}

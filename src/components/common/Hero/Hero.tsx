@@ -10,7 +10,7 @@ import {
 } from '@/components/common/Hero/hero.interfaces';
 import useWindowSize from '@/hooks/useWindowSize';
 import { Mouse } from '@mui/icons-material';
-
+import { useTheme } from '@mui/material/styles';
 const HeroContext = React.createContext<HeroContextType | undefined>(undefined);
 
 const useHeroContext = () => {
@@ -58,7 +58,7 @@ const Background = ({
   const mediaClass = {
     gridRowStart: 1,
     gridColumnStart: 1,
-    height: { xs: 'auto', lg: '80vh', xl: '90vh' },
+    height: { xs: 'auto' },
     transitionProperty: 'opacity',
     transitionDuration: '.5s',
     opacity: isLoaded ? 100 : 0,
@@ -130,6 +130,7 @@ const Background = ({
 const Content = ({ children }: ContentProps) => {
   const { isLoaded } = useHeroContext();
   if (!isLoaded) return null;
+  const theme = useTheme();
   return (
     <Box
       component={'div'}
@@ -138,10 +139,10 @@ const Content = ({ children }: ContentProps) => {
         gridColumnStart: 1,
         display: 'flex',
         alignItems: 'center',
-        textAlign: 'center',
+        textAlign: 'left',
       }}
     >
-      <Container sx={{ py: 0 }} maxWidth="md">
+      <Container sx={{ py: 0, bgcolor: theme.vars.palette.primary.main }} maxWidth="lg">
         {children}
       </Container>
     </Box>
@@ -149,7 +150,7 @@ const Content = ({ children }: ContentProps) => {
 };
 
 const Title = ({ children, className, ...props }: TypographyProps) => (
-  <Typography variant="h1" {...props} sx={{ color: theme => theme.vars.palette.grey[100] }}>
+  <Typography variant="h1" {...props} sx={{ color: theme => theme.vars.palette.grey[800] }}>
     {children}
   </Typography>
 );
@@ -231,10 +232,10 @@ const ScrollIcon = ({ className, align = 'right' }: ScrollIconProps) => {
                 zIndex: 2,
               }}
             >
-              <Typography variant="body2" sx={{ color: theme => theme.vars.palette.grey[100], fontWeight: 600 }}>
+              <Typography variant="body2" sx={{ color: theme => theme.vars.palette.grey[900], fontWeight: 600 }}>
                 scroll
               </Typography>
-              <Mouse sx={{ color: theme => theme.vars.palette.grey[100] }} />
+              <Mouse sx={{ color: theme => theme.vars.palette.grey[900] }} />
             </Box>
           </Button>
         </Box>

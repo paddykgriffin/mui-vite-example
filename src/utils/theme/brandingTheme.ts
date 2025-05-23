@@ -21,73 +21,50 @@ declare module '@mui/material/styles' {
     }
 }
 //mode: 'light' | 'dark'
-export const getDesignTokens = () =>
+export const getDesignTokens = (mode: 'light' | 'dark') =>
 ({
     cssVariables: {
         cssVarPrefix: '',
     },
-    //cssVariables: true,
     palette: {
-        primary: {
-            main: siteConfig.theme.color.primary.light,
-            contrastText: '#fff'
-        },
-        secondary: {
-            main: siteConfig.theme.color.secondary.light,
-            contrastText: '#fff'
-        },
-        colorSchemes: {
-            light: {
+        mode,
+        ...(mode === 'light'
+            ? {
                 primary: {
-                    main: siteConfig.theme.color.primary.light,
-                    contrastText: '#fff'  
-                }  
-            },
-            dark: {
-                primary: {
-                    main: siteConfig.theme.color.primary.dark,
-                    contrastText: '#fff'
+                    main: siteConfig.theme.color.primary.light
                 },
+                secondary: {
+                    main: siteConfig.theme.color.secondary.light
+                }
             }
-        }
-        // mode,
-        // ...(mode === 'light'
-        //     ? {
-        //         primary: {
-        //             main: siteConfig.theme.color.primary.light
-        //         },
-        //         secondary: {
-        //             main: siteConfig.theme.color.secondary.light
-        //         }
-        //     }
-        //     : {
-        //         primary: {
-        //             main: siteConfig.theme.color.primary.dark
-        //         },
-        //         secondary: {
-        //             main: siteConfig.theme.color.secondary.dark
-        //         }
-        //     })
+            : {
+                primary: {
+                    main: siteConfig.theme.color.primary.dark
+                },
+                secondary: {
+                    main: siteConfig.theme.color.secondary.dark
+                }
+            })
     },
     typography: {
         htmlFontSize: 16,
         fontFamily: ['OpenSans', ...systemFont].join(','),
         h1: {
-            fontSize: defaultTheme.typography.pxToRem(80),
+            fontSize: defaultTheme.typography.pxToRem(72),
             fontWeight: 600
         },
         h2: {
-            fontSize: defaultTheme.typography.pxToRem(60),
+            fontSize: defaultTheme.typography.pxToRem(48),
             fontWeight: 500
         },
         h3: {
-            fontSize: defaultTheme.typography.pxToRem(55)
+            fontSize: defaultTheme.typography.pxToRem(40)
         },
         h4: {
-            fontSize: defaultTheme.typography.pxToRem(45)
+            fontSize: defaultTheme.typography.pxToRem(28)
         },
         h5: {
-            fontSize: defaultTheme.typography.pxToRem(35)
+            fontSize: defaultTheme.typography.pxToRem(24)
         },
         body1: {
             fontSize: defaultTheme.typography.pxToRem(18)

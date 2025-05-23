@@ -6,11 +6,11 @@ const siteConfig: SiteConfig = {
   theme: {
     color: {
       primary: {
-        light: '#32a852',
+        light: '#2EC5CE',
         dark: '#f54251',
       },
       secondary: {
-        light: '#D8D8D8',
+        light: '#8C30F5',
         dark: '#000000',
       },
     },

@@ -8,9 +8,9 @@ type SectionProps = BoxProps & {
   containerProps?: ContainerProps;
 };
 
-const Section = ({ children, fullWidth = false, className, containerProps, ...props }: SectionProps) => {
+const Section = ({ children, fullWidth = false, className, containerProps, sx, ...props }: SectionProps) => {
   return (
-    <Box component={'section'} sx={{ py: 10 }} {...props}>
+    <Box component={'section'} sx={{ py: 10, ...(sx as object) }} {...props}>
       {fullWidth ? (
         children
       ) : (
