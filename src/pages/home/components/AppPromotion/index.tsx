@@ -98,7 +98,12 @@ const AppPromotion = () => {
               src={s3('phone-mockup-1.png')}
               alt=""
               component={'img'}
-              sx={{ boxShadow: 12, borderBottomLeftRadius: 35, borderBottomRightRadius: 35, display: { xs: 'none' } }}
+              sx={{
+                boxShadow: 12,
+                borderBottomLeftRadius: 35,
+                borderBottomRightRadius: 35,
+                display: { xs: 'none', md: 'block' },
+              }}
             />
           </Box>
           <Box sx={{ pt: { xs: 2, md: 10 } }}>

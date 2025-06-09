@@ -59,7 +59,7 @@ const Background = ({
     // gridRowStart: 1,
     // gridColumnStart: 1,
     position: 'absolute',
-    right: { xl: '10%' },
+    right: { lg: '10%' },
     top: { md: '50%' },
     bottom: { xs: 0, md: 'inherit' },
     transform: { md: 'translate(0, -50%)' },
