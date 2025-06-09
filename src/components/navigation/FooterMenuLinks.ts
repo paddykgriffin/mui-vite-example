@@ -6,15 +6,27 @@ export interface MenuItem {
 
 export const FooterMenuLinks: Array<MenuItem> = [
   {
-    title: 'Privacy Statement',
+    title: 'About',
     path: '/',
   },
   {
-    title: 'Terms & Conditions',
+    title: 'Features',
     path: '/',
   },
   {
-    title: 'Cookie Policy',
+    title: 'Pricing',
+    path: '/',
+  },
+   {
+    title: 'Careers',
+    path: '/',
+  },
+   {
+    title: 'Help',
+    path: '/',
+  },
+   {
+    title: 'Privacy Policy',
     path: '/',
   },
 ];

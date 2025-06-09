@@ -15,46 +15,93 @@ const AppPromotion = () => {
     >
       <Box
         sx={{
-          display: 'flex',
+          display: { md: 'flex' },
           alignItems: 'center',
           justifyContent: 'space-between',
         }}
       >
-        <Box>
-          <Typography variant="h2" sx={{ fontWeight: 700, mb: 2, position: 'relative', zIndex: 2 }} align="left">
+        <Box sx={{ pb: { xs: 6, md: 0 } }}>
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: 700,
+              mb: 2,
+              textAlign: { xs: 'center', md: 'left' },
+              position: 'relative',
+              zIndex: 2,
+              pt: { xs: 6, md: 0 },
+            }}
+          >
             Manage your projects <br /> from your mobile
           </Typography>
           <Typography
             variant="body1"
-            align="left"
             sx={{
               position: 'relative',
               zIndex: 2,
               maxWidth: { md: '550px' },
               pb: 4,
+              textAlign: { xs: 'center', md: 'left' },
             }}
           >
             Download the app to manage your projects, keep track of the progress and complete tasks without
             procastinating. Stay on track and complete on time!
           </Typography>
 
-          <Typography variant="body1" align="left" sx={{ position: 'relative', zIndex: 2, pb: 1 }}>
-            Get the app
-          </Typography>
-          <Box src={s3('app-store.png')} alt="" component={'img'} sx={{ mr: 2 }} />
-          <Box src={s3('play-store.png')} alt="" component={'img'} />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column' },
+            }}
+          >
+            <Typography
+              variant="body1"
+              sx={{ position: 'relative', textAlign: { xs: 'center', md: 'left' }, zIndex: 2, pb: 1 }}
+            >
+              Get the app
+            </Typography>
+            <Box>
+              <Box
+                src={s3('app-store-badge.svg')}
+                alt=""
+                component={'img'}
+                sx={{
+                  width: { xs: '50%', md: 'auto' },
+                  mb: { xs: 2, md: 0 },
+                  mx: { xs: 'auto', md: 0 },
+                  mr: { md: 2 },
+                }}
+              />
+              <Box
+                src={s3('google-play-badge.svg')}
+                alt=""
+                component={'img'}
+                sx={{
+                  width: { xs: '50%', md: 'auto' },
+                  mx: { xs: 'auto', md: 0 },
+                }}
+              />
+            </Box>
+          </Box>
         </Box>
 
-        <Box sx={{ display: 'flex', justifyContent: 'between', flexDirection: 'row', gap: 4 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: { xs: 'center', md: 'between' },
+            flexDirection: 'row',
+            gap: { md: 4 },
+          }}
+        >
           <Box>
             <Box
               src={s3('phone-mockup-1.png')}
               alt=""
               component={'img'}
-              sx={{ boxShadow: 12, borderBottomLeftRadius: 35, borderBottomRightRadius: 35 }}
+              sx={{ boxShadow: 12, borderBottomLeftRadius: 35, borderBottomRightRadius: 35, display: { xs: 'none' } }}
             />
           </Box>
-          <Box sx={{ pt: 10 }}>
+          <Box sx={{ pt: { xs: 2, md: 10 } }}>
             <Box
               src={s3('phone-mockup-2.png')}
               alt=""

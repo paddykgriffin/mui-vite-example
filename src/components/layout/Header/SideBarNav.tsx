@@ -2,6 +2,7 @@ import { Drawer, Button, Box } from '@mui/material';
 import { useState } from 'react';
 import HeaderNav from '@/components/navigation/HeaderNav';
 import { Close, Menu, Home } from '@mui/icons-material';
+import ModeToggle from './ModeToggle';
 
 type Anchor = 'right';
 
@@ -22,7 +23,7 @@ const SideBarNav = () => {
         <Menu
           sx={[
             {
-              color: 'white',
+              color: 'secondary.main',
               fontSize: '2rem',
             },
             theme =>
@@ -76,6 +77,7 @@ const SideBarNav = () => {
                 ]}
               />
             </Button>
+            <ModeToggle />
             <Button onClick={toggleDrawer('right', false)}>
               <Close
                 sx={[

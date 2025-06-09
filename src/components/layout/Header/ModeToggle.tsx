@@ -13,17 +13,27 @@ const ModeToggle = () => {
   return siteConfig.darkMode ? (
     <Tooltip title={isDarkMode ? 'Turn on Light' : 'Turn on Dark'} arrow placement="bottom">
       <IconButton
+        id="mode-toggle"
         disableTouchRipple
         onClick={() => dispatch(setThemeMode(isDarkMode ? colorSchemes.light : colorSchemes.dark))}
-        sx={{
-          color: theme => (theme.palette.mode === 'dark' ? 'grey.100' : 'grey.100'),
-          background: theme =>
-            theme.palette.mode === 'dark' ? theme.vars.palette.secondary.main : theme.vars.palette.primary.main,
-          borderColor: 'solid 1px blue',
-          // '&:hover': {
-          //   background: 'rgba(255,255,255,.5)',
-          // },
-        }}
+        sx={[
+          {
+            color: theme => (theme.palette.mode === 'dark' ? 'grey.100' : 'grey.100'),
+            background: theme.vars.palette.primary.main,
+            height: '40px',
+            '&:hover': {
+              background: theme.vars.palette.secondary.main,
+            },
+          },
+          theme =>
+            theme.applyStyles('dark', {
+              color: theme.vars.palette.grey[100],
+              background: theme.vars.palette.primary.main,
+              '&:hover': {
+                background: theme.vars.palette.secondary.main,
+              },
+            }),
+        ]}
       >
         {isDarkMode ? <LightModeOutlined fontSize="small" /> : <DarkModeOutlined fontSize="small" />}
       </IconButton>

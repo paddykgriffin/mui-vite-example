@@ -67,7 +67,16 @@ const Logos = () => {
           }}
         >
           {logoData.map((item, index) => (
-            <img key={index} src={s3(item.logo)} alt={`Logo ${index}`} />
+            <Box
+              key={index}
+              src={s3(item.logo)}
+              alt={`Logo ${index}`}
+              component={'img'}
+              sx={{
+                maxWidth: { xs: '50%', md: 'auto' },
+                mx: { xs: 'auto', md: 0 },
+              }}
+            />
           ))}
         </Box>
         <Divider

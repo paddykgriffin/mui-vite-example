@@ -8,9 +8,14 @@ const FooterNav = () => {
       sx={[
         {
           display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
           gap: '16px',
           '& a': {
-            color: theme => theme.vars.palette.grey[800],
+            color: theme => theme.vars.palette.grey[100],
+            transition: 'all 0.3s ease',
+            '&:hover': {
+              color: 'primary.main',
+            },
           },
         },
         theme =>
@@ -26,7 +31,7 @@ const FooterNav = () => {
           to={item.path}
           key={item.title}
           style={{
-            fontSize: '0.875rem',
+            //  fontSize: '0.875rem',
             textDecoration: 'none',
           }}
         >

@@ -47,12 +47,12 @@ export default function Header() {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              // '& a': {
-              //   height: '2rem',
-              // },
               '& img': {
                 mr: 6,
                 height: '2rem',
+              },
+              '& .header-nav': {
+                display: { xs: 'none', md: 'flex' },
               },
             }}
           >
@@ -61,13 +61,26 @@ export default function Header() {
           </Box>
           <Box
             sx={{
-              display: 'flex',
+              display: { xs: 'flex' },
               alignItems: 'center',
               gap: 2,
+              '& #mode-toggle': {
+                display: { xs: 'none', md: 'flex' },
+              },
             }}
           >
-            <img src={s3('app-store.png')} alt="" />
-            <img src={s3('play-store.png')} alt="" />
+            <Box
+              src={s3('app-store-badge.svg')}
+              alt=""
+              component={'img'}
+              sx={{ display: { xs: 'none', md: 'flex' } }}
+            />
+            <Box
+              src={s3('google-play-badge.svg')}
+              alt=""
+              component={'img'}
+              sx={{ display: { xs: 'none', md: 'flex' } }}
+            />
             <ModeToggle />
             <Box
               sx={{

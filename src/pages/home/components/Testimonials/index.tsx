@@ -59,8 +59,8 @@ const Testimonials = () => {
   return (
     <Section
       sx={{
-        height: 'calc(100vh - 50px)',
-        pb: 0,
+        height: { md: 'calc(100vh - 50px)' },
+        pb: { md: 0 },
         background: '#D5FAFC',
         '& svg': { position: 'absolute' },
       }}
@@ -69,39 +69,56 @@ const Testimonials = () => {
 
       <Box
         sx={{
-          px: 12,
+          px: { xs: 2, md: 12 },
           pt: 8,
           position: 'relative',
           zIndex: 1,
         }}
       >
-        <Typography variant="h2" sx={{ fontWeight: 700, mb: 2, position: 'relative', zIndex: 2 }} align="left">
+        <Typography
+          variant="h2"
+          sx={[
+            { fontWeight: 700, mb: 2, position: 'relative', zIndex: 2 },
+            theme =>
+              theme.applyStyles('dark', {
+                color: theme.vars.palette.grey[900],
+              }),
+          ]}
+          align="left"
+        >
           Real Stories from
           <br /> Real Customers
         </Typography>
-        <Typography variant="body1" align="left" sx={{ position: 'relative', zIndex: 2 }}>
+        <Typography
+          variant="body1"
+          align="left"
+          sx={[
+            { position: 'relative', zIndex: 2 },
+            theme => theme.applyStyles('dark', { color: theme.vars.palette.grey[700] }),
+          ]}
+        >
           Get inspired by these stories.
         </Typography>
 
         <Box
           sx={{
             position: 'relative',
-            top: -100,
+            top: { md: -100 },
             maxWidth: { md: '820px' },
             mx: 'auto',
             zIndex: 1,
             display: 'grid',
 
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gridTemplateRows: 'repeat(2, 1fr)',
+            gridTemplateColumns: { md: 'repeat(2, 1fr)' },
+            gridTemplateRows: { md: 'repeat(2, 1fr)' },
             gap: 1,
-            alignItems: 'center',
+            alignItems: { md: 'center' },
             '& :first-child': {
-              gridArea: '1 / 1 / 3 / 2',
+              gridArea: { md: '1 / 1 / 3 / 2' },
             },
             '& :last-child': {
-              gridArea: '2 / 2 / 3 / 3',
-              mt: 0,
+              gridArea: { md: '2 / 2 / 3 / 3' },
+              mt: { md: 0 },
             },
           }}
         >
@@ -118,7 +135,7 @@ const Testimonials = () => {
                 backgroundColor: '#fff',
                 borderRadius: 1.5,
                 boxShadow: 12,
-                width: testimonial.size === 'large' ? '445px' : '350px',
+                width: testimonial.size === 'large' ? { xs: '100%', md: '445px' } : { xs: '100%', md: '300px' },
                 textAlign: 'left',
               }}
             >
@@ -141,20 +158,35 @@ const Testimonials = () => {
                 }}
               >
                 <SvgBackground />
-                <Typography variant="body1" sx={{ fontWeight: 300, pb: 3 }}>
+                <Typography
+                  variant="body1"
+                  sx={[
+                    { fontWeight: 300, pb: 3 },
+                    theme => theme.applyStyles('dark', { color: theme.vars.palette.grey[900] }),
+                  ]}
+                >
                   {' '}
                   {testimonial.quote}
                 </Typography>
 
-                <Typography variant="body1" sx={{ fontWeight: 600, mb: 0, pb: 0 }}>
+                <Typography
+                  variant="body1"
+                  sx={[
+                    { fontWeight: 600, mb: 0, pb: 0 },
+                    theme => theme.applyStyles('dark', { color: theme.vars.palette.grey[900] }),
+                  ]}
+                >
                   {testimonial.name}
                 </Typography>
 
                 <Typography
                   variant="body2"
-                  sx={{
-                    color: 'var(--palette-grey-700)',
-                  }}
+                  sx={[
+                    {
+                      color: 'var(--palette-grey-700)',
+                    },
+                    theme => theme.applyStyles('dark', { color: theme.vars.palette.grey[900] }),
+                  ]}
                 >
                   {testimonial.jobTitle}
                 </Typography>

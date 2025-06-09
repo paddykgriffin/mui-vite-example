@@ -59,7 +59,7 @@ const TailorMadeFeatures = () => {
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
           gap: 4,
           mt: 4,
         }}

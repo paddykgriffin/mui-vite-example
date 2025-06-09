@@ -56,8 +56,13 @@ const Background = ({
   }, [type, setIsLoaded]);
 
   const mediaClass = {
-    gridRowStart: 1,
-    gridColumnStart: 1,
+    // gridRowStart: 1,
+    // gridColumnStart: 1,
+    position: 'absolute',
+    right: { xl: '10%' },
+    top: { md: '50%' },
+    bottom: { xs: 0, md: 'inherit' },
+    transform: { md: 'translate(0, -50%)' },
     height: { xs: 'auto' },
     transitionProperty: 'opacity',
     transitionDuration: '.5s',
@@ -101,9 +106,9 @@ const Background = ({
             src={src}
             ref={mediaRef as React.RefObject<HTMLImageElement>}
             sx={mediaClass}
-            width={992}
-            height={100}
-            style={{ width: '100%' }}
+            width={524}
+            height={400}
+            // style={{ width: '100%' }}
           />
         )
       ) : null}
@@ -138,11 +143,12 @@ const Content = ({ children }: ContentProps) => {
         gridRowStart: 1,
         gridColumnStart: 1,
         display: 'flex',
-        alignItems: 'center',
-        textAlign: 'left',
+        alignItems: { xs: 'start', md: 'center' },
+        textAlign: { xs: 'center', md: 'left' },
+        pt: { xs: 16, md: 0 },
       }}
     >
-      <Container sx={{ py: 0, bgcolor: theme.vars.palette.primary.main }} maxWidth="lg">
+      <Container sx={{ py: 0 }} maxWidth="lg">
         {children}
       </Container>
     </Box>
@@ -150,7 +156,15 @@ const Content = ({ children }: ContentProps) => {
 };
 
 const Title = ({ children, className, ...props }: TypographyProps) => (
-  <Typography variant="h1" {...props} sx={{ color: theme => theme.vars.palette.grey[800] }}>
+  <Typography
+    variant="h1"
+    {...props}
+    sx={[
+      { color: theme => theme.vars.palette.grey[800], textAlign: { xs: 'center', md: 'left' } },
+      theme => theme.applyStyles('dark', { color: theme.vars.palette.grey[100] }),
+    ]}
+    className={className}
+  >
     {children}
   </Typography>
 );
@@ -161,15 +175,42 @@ const SubTitle = ({ children, className, ...props }: TypographyProps) => (
     {...props}
     className={className}
     sx={{
-      color: theme => (theme.palette.mode === 'dark' ? theme.vars.palette.grey[100] : theme.vars.palette.grey[100]),
+      color: theme => (theme.palette.mode === 'dark' ? theme.vars.palette.grey[100] : theme.vars.palette.grey[800]),
       fontSize: { md: '1.5rem' },
-      maxWidth: '50%',
-      mx: 'auto',
-      pt: 2,
+      maxWidth: { md: '50%' },
+      textAlign: { xs: 'center', md: 'left' },
+      //mx: 'auto',
+      py: 2,
     }}
   >
     {children}
   </Typography>
+);
+
+const ContentButton = ({ children }: HTMLProps<'button'>) => (
+  <Button
+    variant="contained"
+    sx={[
+      {
+        color: 'white',
+        bgcolor: 'secondary.main',
+        px: 6,
+        py: 1.5,
+        mx: 'auto',
+      },
+      theme =>
+        theme.applyStyles('dark', {
+          bgcolor: 'primary.main',
+          '&:hover': {
+            bgcolor: 'primary.dark',
+          },
+        }),
+    ]}
+    disableElevation
+    size="large"
+  >
+    {children}
+  </Button>
 );
 
 const ScrollIcon = ({ className, align = 'right' }: ScrollIconProps) => {
@@ -208,8 +249,9 @@ const ScrollIcon = ({ className, align = 'right' }: ScrollIconProps) => {
       sx={{
         gridRowStart: 1,
         gridColumnStart: 1,
-        display: 'flex',
+        //display: 'flex',
         alignItems: 'end',
+        display: { xs: 'none', md: 'flex' },
       }}
     >
       <Container
@@ -232,10 +274,21 @@ const ScrollIcon = ({ className, align = 'right' }: ScrollIconProps) => {
                 zIndex: 2,
               }}
             >
-              <Typography variant="body2" sx={{ color: theme => theme.vars.palette.grey[900], fontWeight: 600 }}>
+              <Typography
+                variant="body2"
+                sx={[
+                  { color: theme => theme.vars.palette.grey[900], fontWeight: 600 },
+                  theme => theme.applyStyles('dark', { color: theme.vars.palette.grey[100] }),
+                ]}
+              >
                 scroll
               </Typography>
-              <Mouse sx={{ color: theme => theme.vars.palette.grey[900] }} />
+              <Mouse
+                sx={[
+                  { color: theme => theme.vars.palette.grey[900], fontWeight: 600 },
+                  theme => theme.applyStyles('dark', { color: theme.vars.palette.grey[100] }),
+                ]}
+              />
             </Box>
           </Button>
         </Box>
@@ -257,7 +310,13 @@ const Hero: React.FC<HeroProps> & HeroComposition = Object.assign(
           className={className}
           {...props}
           component={'section'}
-          sx={{ position: 'relative', display: 'grid', width: '100%' }}
+          sx={{
+            position: 'relative',
+            display: 'grid',
+            width: '100%',
+            height: { xs: '90vh', md: '100vh' },
+            overflow: 'hidden',
+          }}
         >
           {children}
         </Box>
@@ -269,8 +328,9 @@ const Hero: React.FC<HeroProps> & HeroComposition = Object.assign(
     Content,
     Title,
     SubTitle,
+    ContentButton,
     ScrollIcon,
   },
 );
 
-export { Hero, Background, Content, Title, SubTitle, ScrollIcon };
+export { Hero, Background, Content, Title, SubTitle, ScrollIcon, ContentButton };

@@ -1,9 +1,9 @@
-import { colorSchemes } from './../../store/features/themeSlice';
+//import { colorSchemes } from './../../store/features/themeSlice';
 import {createTheme, Theme} from '@mui/material';
 import { ThemeOptions } from '@mui/material';
 
 import siteConfig from '@/site-config';
-import { dark } from 'node_modules/@mui/material/esm/styles/createPalette';
+//import { dark } from 'node_modules/@mui/material/esm/styles/createPalette';
 
 const defaultTheme = createTheme();
 
@@ -47,7 +47,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') =>
             })
     },
     typography: {
-        htmlFontSize: 16,
+        fontSize: 15,
         fontFamily: ['OpenSans', ...systemFont].join(','),
         h1: {
             fontSize: defaultTheme.typography.pxToRem(72),
@@ -67,7 +67,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') =>
             fontSize: defaultTheme.typography.pxToRem(24)
         },
         body1: {
-            fontSize: defaultTheme.typography.pxToRem(18)
+            fontSize: defaultTheme.typography.pxToRem(16)
         },
         body2: {
             fontSize: defaultTheme.typography.pxToRem(14)

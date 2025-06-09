@@ -7,7 +7,7 @@ const siteConfig: SiteConfig = {
     color: {
       primary: {
         light: '#2EC5CE',
-        dark: '#f54251',
+        dark: '#8C30F5',
       },
       secondary: {
         light: '#8C30F5',

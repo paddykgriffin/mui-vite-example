@@ -1,5 +1,5 @@
 import Layout from '../../components/layout/Layout';
-import { Hero, Background, Content, Title, ScrollIcon } from '@/components/common/Hero/Hero';
+import { Hero, Background, Content, Title, ScrollIcon, SubTitle, ContentButton } from '@/components/common/Hero/Hero';
 import Logos from './components/Logos';
 import TailorMadeFeatures from './components/TailorMadeFeatures';
 import Testimonials from './components/Testimonials';
@@ -11,12 +11,13 @@ const Home = () => {
   return (
     <Layout pageTitle="Home">
       <Hero>
-        <Background type="img" src={s3('hero.png')} srcMobile="/images/hero-mobile.png" hideTransparentLayer />
+        <Background type="img" src={s3('hero.png')} hideTransparentLayer />
         <Content>
-          <Title>
-            Organise projects. <br />
-            Get more done.
-          </Title>
+          <Title>Landing page UI kit</Title>
+          <SubTitle>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc odio in et, lectus sit lorem id integer.
+          </SubTitle>
+          <ContentButton>Learn more</ContentButton>
         </Content>
         <ScrollIcon align="center" />
       </Hero>
